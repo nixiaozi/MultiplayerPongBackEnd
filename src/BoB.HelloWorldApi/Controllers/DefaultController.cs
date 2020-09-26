@@ -88,5 +88,20 @@ namespace BoB.HelloWorldApi.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// 获取服务端IP地址
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult<string> GetGameServerIp()
+        {
+            ApiResult<string> result = new ApiResult<string>(false);
+
+            result.Data = BoBConfiguration.GameServerPath;
+
+            result.Success = true;
+            return Ok(result);
+        }
+
     }
 }
