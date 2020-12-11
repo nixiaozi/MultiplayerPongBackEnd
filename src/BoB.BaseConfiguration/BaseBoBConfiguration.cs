@@ -29,10 +29,16 @@ namespace BoB.BoBConfiguration
 
         public static void Init(Assembly theAssembly)
         {
-            var configFilePath = System.Reflection.Assembly.GetEntryAssembly().GetAssemblyRoot() + StaticConfiguration.BoBConfigFileName;
+            // GetAssemblyRoot() 会一直记录项目所在的目录
+            //var configFilePath = System.Reflection.Assembly.GetEntryAssembly().GetAssemblyRoot() + StaticConfiguration.BoBConfigFileName;
+            var configFilePath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + StaticConfiguration.BoBConfigFileName;
+
 
             lock (obj)
             {
+                /*Console.WriteLine("configFilePath==>"+configFilePath);
+                Console.WriteLine("GetEntryAssembly Location==>" + Assembly.GetEntryAssembly().Location);
+                Console.WriteLine("GetExecutingAssembly Location==>" + Assembly.GetExecutingAssembly().Location);*/
 
                 if (File.Exists(configFilePath))
                 {

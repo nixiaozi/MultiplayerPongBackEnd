@@ -96,7 +96,7 @@ namespace BoB.HelloWorldApi.Controllers
         public ActionResult<string> GetGameServerIp()
         {
             ApiResult<string> result = new ApiResult<string>(false);
-
+            // Console.WriteLine("GetGameServerIp:"); // 在产品环境下执行这个会出错。
             result.Data = BoBConfiguration.GameServerPath;
 
             result.Success = true;
